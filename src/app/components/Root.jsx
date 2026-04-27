@@ -6,13 +6,13 @@ import { toast } from "sonner";
 
 export function Root() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [vendor, setVendor]                 = useState(null);
-  const location                            = useLocation();
-  const navigate                            = useNavigate();
+  const [vendor, setVendor] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Re-check login state every time the route changes
   useEffect(() => {
-    const token      = getToken();
+    const token = getToken();
     const vendorInfo = getVendorInfo();
     if (token && vendorInfo) {
       setVendor(vendorInfo);
@@ -52,47 +52,46 @@ export function Root() {
             <div className="hidden md:flex items-center space-x-8">
               <Link
                 to="/"
-                className={`transition-colors ${
-                  isActive("/") ? "text-orange-600 font-semibold" : "text-gray-700 hover:text-orange-600"
-                }`}
+                className={`transition-colors ${isActive("/") ? "text-orange-600 font-semibold" : "text-gray-700 hover:text-orange-600"
+                  }`}
               >
                 Home
               </Link>
               <Link
                 to="/donate"
-                className={`transition-colors ${
-                  isActive("/donate") ? "text-orange-600 font-semibold" : "text-gray-700 hover:text-orange-600"
-                }`}
+                className={`transition-colors ${isActive("/donate") ? "text-orange-600 font-semibold" : "text-gray-700 hover:text-orange-600"
+                  }`}
               >
                 Donate Food
               </Link>
               <Link
                 to="/browse"
-                className={`transition-colors ${
-                  isActive("/browse") ? "text-orange-600 font-semibold" : "text-gray-700 hover:text-orange-600"
-                }`}
+                className={`transition-colors ${isActive("/browse") ? "text-orange-600 font-semibold" : "text-gray-700 hover:text-orange-600"
+                  }`}
               >
                 Browse Food
               </Link>
               <Link
                 to="/how-it-works"
-                className={`transition-colors ${
-                  isActive("/how-it-works") ? "text-orange-600 font-semibold" : "text-gray-700 hover:text-orange-600"
-                }`}
+                className={`transition-colors ${isActive("/how-it-works") ? "text-orange-600 font-semibold" : "text-gray-700 hover:text-orange-600"
+                  }`}
               >
                 How It Works
               </Link>
 
               {/* ── Auth Section ── */}
               {vendor ? (
-                // Logged in — show vendor name + logout
+                // Logged in — show vendor name as dashboard link + logout
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-3 py-1.5">
+                  <Link
+                    to="/dashboard"
+                    className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-lg px-3 py-1.5 hover:bg-green-100 transition-colors"
+                  >
                     <Store className="h-4 w-4 text-green-600" />
                     <span className="text-green-700 font-medium text-sm">
                       {vendor.name}
                     </span>
-                  </div>
+                  </Link>
                   <button
                     onClick={handleLogout}
                     className="flex items-center gap-1.5 text-gray-500 hover:text-red-500 transition-colors text-sm"
@@ -133,36 +132,32 @@ export function Root() {
                 <Link
                   to="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-lg transition-colors ${
-                    isActive("/") ? "bg-orange-100 text-orange-600 font-semibold" : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                  className={`px-3 py-2 rounded-lg transition-colors ${isActive("/") ? "bg-orange-100 text-orange-600 font-semibold" : "text-gray-700 hover:bg-gray-100"
+                    }`}
                 >
                   Home
                 </Link>
                 <Link
                   to="/donate"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-lg transition-colors ${
-                    isActive("/donate") ? "bg-orange-100 text-orange-600 font-semibold" : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                  className={`px-3 py-2 rounded-lg transition-colors ${isActive("/donate") ? "bg-orange-100 text-orange-600 font-semibold" : "text-gray-700 hover:bg-gray-100"
+                    }`}
                 >
                   Donate Food
                 </Link>
                 <Link
                   to="/browse"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-lg transition-colors ${
-                    isActive("/browse") ? "bg-orange-100 text-orange-600 font-semibold" : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                  className={`px-3 py-2 rounded-lg transition-colors ${isActive("/browse") ? "bg-orange-100 text-orange-600 font-semibold" : "text-gray-700 hover:bg-gray-100"
+                    }`}
                 >
                   Browse Food
                 </Link>
                 <Link
                   to="/how-it-works"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-lg transition-colors ${
-                    isActive("/how-it-works") ? "bg-orange-100 text-orange-600 font-semibold" : "text-gray-700 hover:bg-gray-100"
-                  }`}
+                  className={`px-3 py-2 rounded-lg transition-colors ${isActive("/how-it-works") ? "bg-orange-100 text-orange-600 font-semibold" : "text-gray-700 hover:bg-gray-100"
+                    }`}
                 >
                   How It Works
                 </Link>
@@ -225,9 +220,9 @@ export function Root() {
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <Link to="/"           className="block text-gray-400 hover:text-white">Home</Link>
-                <Link to="/donate"     className="block text-gray-400 hover:text-white">Donate Food</Link>
-                <Link to="/browse"     className="block text-gray-400 hover:text-white">Browse Food</Link>
+                <Link to="/" className="block text-gray-400 hover:text-white">Home</Link>
+                <Link to="/donate" className="block text-gray-400 hover:text-white">Donate Food</Link>
+                <Link to="/browse" className="block text-gray-400 hover:text-white">Browse Food</Link>
                 <Link to="/how-it-works" className="block text-gray-400 hover:text-white">How It Works</Link>
               </div>
             </div>
