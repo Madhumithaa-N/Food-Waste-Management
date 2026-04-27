@@ -4,6 +4,7 @@ import { Home } from "./components/Home";
 import { DonateFood } from "./components/DonateFood";
 import { BrowseFood } from "./components/BrowseFood";
 import { HowItWorks } from "./components/HowItWorks";
+import { VendorAuth }  from "./components/VendorAuth";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
       { path: "donate", Component: DonateFood },
       { path: "browse", Component: BrowseFood },
       { path: "how-it-works", Component: HowItWorks },
+      { path: "login",        Component: VendorAuth },
     ],
   },
 ]);
