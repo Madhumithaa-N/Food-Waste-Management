@@ -16,7 +16,7 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  base: '/Food-Waste-Management/',   // IMPORTANT for GitHub Pages
+  base: '/',   // IMPORTANT for GitHub Pages
 
   plugins: [
     figmaAssetResolver(),
